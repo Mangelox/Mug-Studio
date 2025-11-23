@@ -5,8 +5,8 @@ import * as THREE from 'three';
 import { MUG_CIRCUMFERENCE_CM, MUG_HEIGHT_CM } from '../types';
 
 // Augment JSX namespace to include React Three Fiber elements
-// Using module augmentation for 'react' to ensure it merges correctly with React types
-declare module 'react' {
+// Using global augmentation to ensure it merges correctly with JSX types
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       ambientLight: any;

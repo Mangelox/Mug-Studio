@@ -12,12 +12,14 @@ interface CanvasEditorProps {
   onUpdatePreview: (dataUrl: string) => void;
 }
 
-const URLImage = ({ layer, isSelected, onSelect, onChange }: { 
-  layer: any, 
-  isSelected: boolean, 
-  onSelect: () => void,
-  onChange: (newAttrs: any) => void 
-}) => {
+interface LayerComponentProps {
+  layer: any;
+  isSelected: boolean;
+  onSelect: () => void;
+  onChange: (newAttrs: any) => void;
+}
+
+const URLImage: React.FC<LayerComponentProps> = ({ layer, isSelected, onSelect, onChange }) => {
   const [image] = useImage(layer.src, 'anonymous');
   const shapeRef = useRef<Konva.Image>(null);
   const trRef = useRef<Konva.Transformer>(null);
@@ -77,12 +79,7 @@ const URLImage = ({ layer, isSelected, onSelect, onChange }: {
   );
 };
 
-const TextObj = ({ layer, isSelected, onSelect, onChange }: {
-  layer: any,
-  isSelected: boolean,
-  onSelect: () => void,
-  onChange: (newAttrs: any) => void
-}) => {
+const TextObj: React.FC<LayerComponentProps> = ({ layer, isSelected, onSelect, onChange }) => {
   const shapeRef = useRef<Konva.Text>(null);
   const trRef = useRef<Konva.Transformer>(null);
 
